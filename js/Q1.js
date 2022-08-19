@@ -13,21 +13,22 @@ ratingData = [
 
 
 // array to store unique restaurants
-uniqueRestaurants = []
+let uniqueRestaurants = []
 
 // looping through ratingData
 ratingData.forEach(element => {
+    
     // if restaurant is not already present in uniqueRestaurants then indexOf returns -1
     if(uniqueRestaurants.indexOf(element.restaurant)==-1){
 
-        // restayrant is pushed to uniqueRestaurant arry
+        // restaurant is pushed to uniqueRestaurant array
         uniqueRestaurants.push(element.restaurant)
 
     }
 });
 
 // array to store output
-var output=[]
+let  output = []
 
 // looping through unique restaurants
 uniqueRestaurants.forEach(element=>{
@@ -39,33 +40,39 @@ uniqueRestaurants.forEach(element=>{
     // looping through rataingData
     ratingData.forEach(R=>{
         
+        // if unique restaurant element and restaurant property of ratingData object are equal
         if(element === R.restaurant){
 
+            // adding rating
             sumOfRating = sumOfRating + R.rating;
+            // incrementing count
             count++;
 
         }
     })
 
+    // calculating average
     let avgRating = sumOfRating/count;
 
+    // creating a new object
     rest ={
+
+        restaurant : element,
+
+        averageRating : avgRating
 
     }
 
-    rest.restaurant = element;
-
-    rest.averageRating = avgRating;
-
+    // adding object to output array
     output.push(rest)
-
 
 })
 
-
+// printing output array
 console.log(output)
 
-
+// finding restaurants whose rating is greater than or equal to 4
 let output2 = output.filter(element=>element.averageRating>=4)
 
+// printing array
 console.log(output2)
